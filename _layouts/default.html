@@ -11,27 +11,29 @@
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>P</text></svg>">
 </head>
-<body>
-  {% assign banner = page.banner %}
-  <header class="banner{% if banner %} banner-{{ banner }}{% endif %}{% if page.banner_title == false %} banner-slim{% endif %}">
-    <div class="banner-inner">
-      {% include nav.html %}
-      {% unless page.banner_title == false %}
-      <h1 class="banner-title">{{ page.title }}</h1>
-      {% endunless %}
-    </div>
+<body class="with-strip">
+  {%- comment -%}
+    The left strip shows this section's part of the coast-to-cosmos photo:
+    tools = cliffs, writing = sea, reading / about = stars. It stays fixed;
+    only the content on the right scrolls, on a plain background.
+  {%- endcomment -%}
+  <header class="strip strip-{{ page.banner | default: 'reading' }}">
+    {% include nav.html %}
   </header>
 
-  <main class="wrap">
-    {{ content }}
-  </main>
+  <div class="page">
+    <main class="wrap">
+      {% unless page.banner_title == false %}<h1 class="page-title">{{ page.title }}</h1>{% endunless %}
+      {{ content }}
+    </main>
 
-  <footer class="site-footer wrap">
-    {% if site.linkedin and site.linkedin != "" %}<a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
-    {% if site.github and site.github != "" %}<a href="{{ site.github }}">GitHub</a>{% endif %}
-    {% if site.substack and site.substack != "" %}<a href="{{ site.substack }}">Substack</a>{% endif %}
-    {% if site.email and site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
-    {% if site.ai_note and site.ai_note != "" %}<p class="ai-note">{{ site.ai_note }}</p>{% endif %}
-  </footer>
+    <footer class="site-footer wrap">
+      {% if site.linkedin and site.linkedin != "" %}<a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      {% if site.github and site.github != "" %}<a href="{{ site.github }}">GitHub</a>{% endif %}
+      {% if site.substack and site.substack != "" %}<a href="{{ site.substack }}">Substack</a>{% endif %}
+      {% if site.email and site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+      {% if site.ai_note and site.ai_note != "" %}<p class="ai-note">{{ site.ai_note }}</p>{% endif %}
+    </footer>
+  </div>
 </body>
 </html>
