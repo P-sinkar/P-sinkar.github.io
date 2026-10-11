@@ -1,0 +1,34 @@
+name: Weekly Substack sync
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"   # Mondays, 08:47 IST
+  workflow_dispatch:        # lets you run it any time from the Actions tab
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull new Substack articles
+        env:
+          FEED_URL: https://pranavsinkar.substack.com/feed
+        run: python3 .github/scripts/substack_sync.py
+      - name: Commit and rebuild the site if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$(git status --porcelain _posts)" ]; then
+            git config user.name "substack-sync"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add _posts
+            git commit -m "Add new Substack articles"
+            git push
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          else
+            echo "Nothing new."
+          fi

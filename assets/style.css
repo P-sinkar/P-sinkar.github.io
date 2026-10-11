@@ -193,3 +193,4 @@ th, td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px sol
 
 .ai-note { flex-basis: 100%; margin: .25rem 0 0; font-size: .8rem; line-height: 1.5; }
 .site-footer { flex-wrap: wrap; }
+.ext { color: var(--muted); font-size: .85em; }

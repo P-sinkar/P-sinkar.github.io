@@ -18,4 +18,5 @@ This site is a living record of all of that. Writing here is a way to think more
 {% if site.email and site.email != "" %}- Email: [{{ site.email }}](mailto:{{ site.email }}){% endif %}
 {% if site.linkedin and site.linkedin != "" %}- [LinkedIn]({{ site.linkedin }}){% endif %}
 {% if site.github and site.github != "" %}- [GitHub]({{ site.github }}){% endif %}
+{% if site.substack and site.substack != "" %}- [Substack]({{ site.substack }}){% endif %}
 {% unless site.email != "" or site.linkedin != "" or site.github != "" %}Links coming soon.{% endunless %}

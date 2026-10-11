@@ -14,8 +14,8 @@ title: Home
     <ul class="list">
       {% for post in site.posts limit: 5 %}
       <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="meta">{{ post.date | date: "%b %Y" }}{% if post.kind %} · {{ post.kind }}{% endif %}</span>
+        {% if post.external_url %}<a href="{{ post.external_url }}">{{ post.title }}<span class="ext" aria-label="opens on {{ post.source | default: 'another site' }}"> ↗</span></a>{% else %}<a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% endif %}
+        <span class="meta">{{ post.date | date: "%b %Y" }}{% if post.kind %} · {{ post.kind }}{% endif %}{% if post.source %} · {{ post.source }}{% endif %}</span>
       </li>
       {% endfor %}
     </ul>

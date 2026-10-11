@@ -1,6 +1,13 @@
 ---
 layout: default
 ---
+{% if page.external_url %}
+<meta http-equiv="refresh" content="0; url={{ page.external_url }}">
+<article class="post">
+  <h1>{{ page.title }}</h1>
+  <p>This piece is published on {{ page.source | default: "another site" }}. <a href="{{ page.external_url }}">Read it there →</a></p>
+</article>
+{% else %}
 <article class="post">
   <header>
     <h1>{{ page.title }}</h1>
@@ -28,3 +35,4 @@ layout: default
   {% if page.updated %}<p class="meta">Last updated {{ page.updated | date: "%-d %B %Y" }}.</p>{% endif %}
   <p class="back"><a href="{{ '/writing/' | relative_url }}">← All writing</a></p>
 </article>
+{% endif %}
