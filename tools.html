@@ -4,7 +4,7 @@ title: Tools
 permalink: /tools/
 ---
 <h1>Things I've built</h1>
-<p class="lede">Small tools I've made to solve problems I ran into. Some are useful, some are experiments, and the status of each is noted honestly.</p>
+<p class="lede">Small tools I've made to solve problems I ran into. They're built for my own use first, and the status and limitations of each are noted honestly.</p>
 
 {% for tool in site.data.tools %}
 <article class="tool" id="{{ tool.name | slugify }}">
@@ -12,8 +12,10 @@ permalink: /tools/
   <p>{{ tool.description }}</p>
   <dl>
     {% if tool.problem %}<dt>Why</dt><dd>{{ tool.problem }}</dd>{% endif %}
+    {% if tool.features %}<dt>What it does</dt><dd><ul>{% for f in tool.features %}<li>{{ f }}</li>{% endfor %}</ul></dd>{% endif %}
+    {% if tool.downloads %}<dt>Download</dt><dd class="downloads">{% for d in tool.downloads %}<a class="dl" href="{{ '/assets/downloads/' | append: d.file | relative_url }}" download>{{ d.label }}{% if d.version %} <span>v{{ d.version }}</span>{% endif %}</a>{% endfor %}</dd>{% endif %}
     {% if tool.install %}<dt>Install</dt><dd>{{ tool.install | markdownify | remove: "<p>" | remove: "</p>" }}</dd>{% endif %}
-    {% if tool.limitations %}<dt>Limitations</dt><dd>{{ tool.limitations }}</dd>{% endif %}
+    {% if tool.limitations %}<dt>Limitations</dt><dd><ul>{% for l in tool.limitations %}<li>{{ l }}</li>{% endfor %}</ul></dd>{% endif %}
     {% if tool.source %}<dt>Source</dt><dd><a href="{{ tool.source }}">{{ tool.source | remove: "https://" }}</a></dd>{% endif %}
   </dl>
 </article>

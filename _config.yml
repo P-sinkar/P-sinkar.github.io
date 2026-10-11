@@ -6,8 +6,11 @@ description: A place for things I think about, build, and find interesting.
 
 # Your links. Leave any of them blank ("") and it simply won't show.
 email: ""            # e.g. you@example.com
-linkedin: ""         # full URL, e.g. https://www.linkedin.com/in/your-handle
+linkedin: "https://www.linkedin.com/in/pranav-sinkar/"
 github: "https://github.com/P-sinkar"
+
+# Note shown at the bottom of every page. Delete the text (leave "") to hide it.
+ai_note: "Apart from the articles, the text on this site was drafted with AI so I could get it online quickly. I'm rewriting it in my own words over time."
 
 # Hosting.
 # If your repo is named <username>.github.io, leave baseurl as "".

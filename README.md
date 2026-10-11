@@ -30,7 +30,7 @@ Everything can be done in GitHub's web editor. Each commit rebuilds the site in 
   note: Why it's worth reading.
 ```
 
-**A tool.** Edit `_data/tools.yml` and copy one of the existing entries. Only `name`, `description` and `status` are required.
+**A tool.** Edit `_data/tools.yml` and copy one of the existing entries. Only `name`, `description` and `status` are required. Downloadable zips go in `assets/downloads/`.
 
 **Pages and wording.** The home intro is in `index.html`, the About page is `about.md`, and colours and fonts are at the top of `assets/style.css`.
 

@@ -3,24 +3,50 @@
 # leave it out and it won't show. Order here = order on the page.
 #
 # Fields:
-#   name, description, problem, status, source (URL), install, limitations
+#   name, description, problem, status, features (list), downloads (list of label/file/version),
+#   install, limitations (list), source (URL)
+#
+# Download files live in assets/downloads/. To ship a new version, upload the new zip there
+# and update the file name and version below.
 
-- name: ChatGPT Conversation Organiser
-  description: A Chrome extension for organising ChatGPT conversations into folders and nested folders.
-  problem: A long, flat list of conversations gets hard to navigate once you use ChatGPT for many different things.
-  status: In development
-  # source: https://github.com/your-handle/chatgpt-organiser
-  # install: Download the folder, open chrome://extensions, turn on Developer mode, click "Load unpacked" and select the folder.
-  limitations: Not yet publicly released.
-
-- name: Claude Conversation Organiser
-  description: A companion extension that brings the same folder-based organisation to Claude conversations.
-  problem: The same as above, for Claude.
-  status: In development
-  limitations: Not yet publicly released.
+- name: AI Chat Organiser (ChatGPT & Claude)
+  description: Two Chrome extensions, one for ChatGPT and one for Claude, that add a side panel for sorting conversations into folders and sub-folders.
+  problem: Both apps list conversations as one long, flat history, which gets hard to navigate once you use them for many different things.
+  status: Beta
+  features:
+    - Nested folders, with search and sorting by date or title
+    - Import past conversations from your ChatGPT or Claude data export
+    - Export the open chat as Markdown (to paste into another AI) or as a readable HTML page
+    - Back up and restore your folder structure
+  downloads:
+    - label: ChatGPT version
+      file: chatgpt-organizer-v1.19.2.zip
+      version: 1.19.2
+    - label: Claude version
+      file: claude-organizer-v1.1.1.zip
+      version: 1.1.1
+  install: Unzip the file, open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the unzipped folder.
+  limitations:
+    - Not on the Chrome Web Store. It installs in Developer mode only.
+    - It relies on the ChatGPT and Claude page layouts, so it can break when they change their sites.
+    - Folders are stored in your browser only. Use Export backup to keep a copy.
 
 - name: YouTube Transcript Rater
-  description: A Chrome extension intended to evaluate a video's transcript against my own criteria and produce a rating and summary.
+  description: A Chrome extension that pulls a YouTube video's transcript and rates it against criteria you write yourself, using your existing ChatGPT or Claude account, so there's no API key or extra cost.
   problem: Deciding whether a long video is worth watching before spending the time on it.
-  status: In development
-  limitations: Not yet publicly released.
+  status: Beta
+  features:
+    - Rate from the video page, or paste any YouTube link into the side panel
+    - Score breakdown, verdict and summary, shown right on the page
+    - History of past ratings, exportable as Markdown
+    - Download the raw transcript as a text file
+  downloads:
+    - label: Download
+      file: yt-transcript-rater-v4.0.1.zip
+      version: 4.0.1
+  install: Unzip, load it via `chrome://extensions` → **Developer mode** → **Load unpacked**, then open the side panel and paste in your criteria.
+  limitations:
+    - Works by typing into your ChatGPT or Claude chat, so it counts against those apps' usage limits.
+    - Uses Chrome's debugger permission to open YouTube's transcript panel, so Chrome briefly shows a "started debugging this browser" bar.
+    - Very long transcripts are trimmed to about 60,000 characters.
+    - Not on the Chrome Web Store. It installs in Developer mode only.

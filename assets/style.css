@@ -170,3 +170,26 @@ th, td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px sol
   .tool dl { grid-template-columns: 1fr; gap: 0; }
   .tool dt { padding-top: .6rem; }
 }
+
+/* ---------- tool details: lists & downloads ---------- */
+
+.tool dd ul { margin: 0; padding-left: 1.1rem; }
+.tool dd li { margin-bottom: .15rem; }
+.downloads { display: flex; flex-wrap: wrap; gap: .5rem; }
+.dl {
+  display: inline-block;
+  padding: .3rem .8rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: .85rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.dl:hover { border-color: var(--accent); color: var(--accent); }
+.dl span { color: var(--muted); font-size: .78rem; }
+
+/* ---------- AI-drafting note ---------- */
+
+.ai-note { flex-basis: 100%; margin: .25rem 0 0; font-size: .8rem; line-height: 1.5; }
+.site-footer { flex-wrap: wrap; }
