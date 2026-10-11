@@ -16,7 +16,7 @@ ai_note: "Apart from the articles, the text on this site was drafted with AI so 
 # Hosting.
 # If your repo is named <username>.github.io, leave baseurl as "".
 # If it's named anything else (e.g. "website"), set baseurl: "/website".
-url: ""
+url: "https://pranavsinkar.com"
 baseurl: ""
 
 # Article URLs look like /writing/my-article-title/
