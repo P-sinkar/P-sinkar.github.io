@@ -47,8 +47,10 @@ for source in (from_rss, from_relay):
     except Exception as e:
         errors.append(f"{source.__name__}: {e}")
 if items is None:
-    print("::error::Could not read the Substack feed. " + " | ".join(errors))
-    sys.exit(1)
+    # No publication yet, or Substack is unreachable: note it and finish quietly
+    # instead of failing (a failed run would email you every week).
+    print("::warning::Could not read the Substack feed, skipping this week. " + " | ".join(errors))
+    sys.exit(0)
 
 
 def clean(s, limit=None):

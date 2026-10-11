@@ -9,25 +9,23 @@
 # Download files live in assets/downloads/. To ship a new version, upload the new zip there
 # and update the file name and version below.
 
-- name: AI Chat Organiser (ChatGPT & Claude)
-  description: Two Chrome extensions, one for ChatGPT and one for Claude, that add a side panel for sorting conversations into folders and sub-folders.
+- name: AI Chat Organiser
+  description: A Chrome extension that adds a side panel for sorting your ChatGPT and Claude conversations into one shared set of folders and sub-folders.
   problem: Both apps list conversations as one long, flat history, which gets hard to navigate once you use them for many different things.
   status: Beta
   features:
+    - One folder tree for both ChatGPT and Claude, with a filter to show either or both
     - Nested folders, with search and sorting by date or title
-    - Import past conversations from your ChatGPT or Claude data export
+    - Import past conversations from a ChatGPT or Claude data export (the site is detected automatically)
     - Export the open chat as Markdown (to paste into another AI) or as a readable HTML page
     - Back up and restore your folder structure
   downloads:
-    - label: ChatGPT version
-      file: chatgpt-organizer-v1.19.2.zip
-      version: 1.19.2
-    - label: Claude version
-      file: claude-organizer-v1.1.1.zip
-      version: 1.1.1
+    - label: Download
+      file: ai-chat-organizer-v2.0.0.zip
+      version: 2.0.0
   install: Unzip the file, open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the unzipped folder.
   limitations:
-    - Not on the Chrome Web Store. It installs in Developer mode only.
+    - Not on the Chrome Web Store yet. It installs in Developer mode only.
     - It relies on the ChatGPT and Claude page layouts, so it can break when they change their sites.
     - Folders are stored in your browser only. Use Export backup to keep a copy.
 
