@@ -1,38 +1,15 @@
 ---
-layout: default
+layout: home
 title: Home
 ---
-<section class="intro">
-  <h1>Hi, I'm Pranav.</h1>
-  <p class="lede">This is a place for things I think about, build, and find interesting.</p>
-  <p>I work in strategy and investments. Outside of that, I think about technology and AI, build small software tools for problems I run into, and wonder about how we think and live. Here you'll find <a href="{{ '/writing/' | relative_url }}">my writing</a>, <a href="{{ '/tools/' | relative_url }}">things I've built</a>, and <a href="{{ '/reading/' | relative_url }}">things worth reading</a>.</p>
-</section>
-
-<section>
-  <h2>Recent writing</h2>
-  {% if site.posts.size > 0 %}
-    <ul class="list">
-      {% for post in site.posts limit: 5 %}
-      <li>
-        {% if post.external_url %}<a href="{{ post.external_url }}">{{ post.title }}<span class="ext" aria-label="opens on {{ post.source | default: 'another site' }}"> ↗</span></a>{% else %}<a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% endif %}
-        <span class="meta">{{ post.date | date: "%b %Y" }}{% if post.kind %} · {{ post.kind }}{% endif %}{% if post.source %} · {{ post.source }}{% endif %}</span>
-      </li>
-      {% endfor %}
-    </ul>
-    {% if site.posts.size > 5 %}<p><a href="{{ '/writing/' | relative_url }}">All writing →</a></p>{% endif %}
-  {% else %}
-    <p class="empty">Nothing published yet. The first pieces are on their way.</p>
-  {% endif %}
-</section>
-
-<section>
-  <h2>Things I've built</h2>
-  <ul class="list">
-    {% for tool in site.data.tools limit: 3 %}
-    <li>
-      <a href="{{ '/tools/' | relative_url }}#{{ tool.name | slugify }}">{{ tool.name }}</a>
-      <span class="meta">{{ tool.status }}</span>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
+<h1>Pranav here.</h1>
+<p>This website is an attempt to put down what I read, think about and try to build.</p>
+<p>What I enjoy most is learning how things work, and then playing around with them. It shows up in three places:</p>
+<ol>
+  <li>Understanding what incentivises people, and how that shows up in their actions.</li>
+  <li>Breaking things (often tech) down to their core: how they work, and what I can tweak to make them better.</li>
+  <li>Businesses: how they operate, what made them what they are today, and what limits their next step.</li>
+</ol>
+<p>Writing here is a way to think more clearly, so most of what you'll find is unfinished notes. Each one is an attempt to be better than the last.</p>
+<p>CA by education, I work in the founder's office at a consumer tech startup. I hope that one day, the sum total of my actions will outweigh where I studied and where I worked.</p>
+<p class="aukaat">I try to remind myself that <em>apni aukaat ke bahar ki cheezein try kar leni chahiye, kya pata humne apni aukaat ko underestimate kiya ho.</em><br><span class="translation">Try things that seem beyond your reach. Maybe you've underestimated your reach.</span></p>

@@ -32,7 +32,7 @@ Everything can be done in GitHub's web editor. Each commit rebuilds the site in 
 
 **A tool.** Edit `_data/tools.yml` and copy one of the existing entries. Only `name`, `description` and `status` are required. Downloadable zips go in `assets/downloads/`.
 
-**Pages and wording.** The home intro is in `index.html`, the About page is `about.md`, and colours and fonts are at the top of `assets/style.css`.
+**Pages and wording.** The home page (your About text) is `index.html`; the home quote and the AI note are in `_config.yml`; colours, fonts and the background photo settings are in `assets/style.css`, and the photos themselves in `assets/img/`. The old `/about/` address redirects to the home page.
 
 ## Structure
 
@@ -42,7 +42,8 @@ index.html         home
 writing.html       writing archive (lists _posts automatically)
 tools.html         reads _data/tools.yml
 reading.html       reads _data/reading.yml
-about.md           about page
+_layouts/home.html one-screen home page (coast to cosmos)
+_includes/nav.html the four-item menu
 _posts/            published articles (Markdown)
 _drafts/           unpublished drafts and the article template
 _layouts/          page templates

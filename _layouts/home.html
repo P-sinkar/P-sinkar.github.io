@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500&display=swap">
+  <link rel="preload" as="image" href="{{ '/assets/img/coast-cosmos-desktop-16x10.webp' | relative_url }}" media="(min-width: 48.01rem)">
+  <link rel="preload" as="image" href="{{ '/assets/img/coast-cosmos-phone.webp' | relative_url }}" media="(max-width: 48rem)">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>P</text></svg>">
+</head>
+<body class="is-home">
+  <div class="home">
+    {% include nav.html %}
+
+    <main class="home-about">
+      {{ content }}
+    </main>
+
+    {% if site.quote %}
+    <figure class="home-quote">
+      <blockquote>{{ site.quote }}</blockquote>
+      {% if site.quote_by %}<figcaption>{{ site.quote_by }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+
+    <div class="home-social">
+      {% if site.linkedin and site.linkedin != "" %}<a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      {% if site.github and site.github != "" %}<a href="{{ site.github }}">GitHub</a>{% endif %}
+      {% if site.substack and site.substack != "" %}<a href="{{ site.substack }}">Substack</a>{% endif %}
+    </div>
+  </div>
+</body>
+</html>

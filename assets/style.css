@@ -1,105 +1,184 @@
-/* Pranav — personal site. One stylesheet, no dependencies. */
+/* Pranav Sinkar — personal site. Coast to cosmos.
+   Home: the full photo. Writing / Tools / Readings: a banner crop of it,
+   with all reading text on a plain, solid background. */
 
 :root {
-  --bg: #fbfaf6;
-  --text: #24221f;
-  --muted: #76716a;
-  --rule: #e6e2d9;
-  --accent: #8a3b1f;       /* muted brick, used sparingly */
-  --tag-bg: #f0ece3;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Charter, "Bitstream Charter", Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1b1a18;
-    --text: #e8e4dc;
-    --muted: #9d978d;
-    --rule: #33302b;
-    --accent: #e0956f;
-    --tag-bg: #2a2824;
-  }
+  --bg: #0b1020;          /* deep night-sea navy, solid behind all reading text */
+  --surface: #121a2e;
+  --text: #e6e9ee;        /* soft white: ~15:1 on --bg, less glare than pure white */
+  --muted: #a3afc2;       /* ~8:1 on --bg */
+  --rule: #24304a;
+  --accent: #8fd0d6;      /* sea glass, ~11:1 on --bg */
+  --sand: #eae2d8;        /* menu text over the cliffs */
+  --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
-  margin: 0 auto;
-  max-width: 40rem;
-  padding: 2.5rem 1.25rem 3rem;
+  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--serif);
-  font-size: 1.1875rem;     /* 19px */
-  line-height: 1.65;
+  font-size: 1.1875rem;   /* 19px */
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
-/* ---------- header & footer ---------- */
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
 
-.site-header {
+/* ---------- navigation (shared) ---------- */
+
+.site-nav { display: flex; font-family: var(--serif); }
+.site-nav a { color: var(--sand); text-decoration: none; }
+.site-nav a:hover { color: #fff; text-decoration: underline; }
+.site-nav a[aria-current="page"] { color: #fff; }
+.nav-name { font-weight: 500; }
+
+/* ==========================================================
+   HOME — one screen, coast (left) → sea → cosmos (right)
+   ========================================================== */
+
+.is-home { background: #080b18; }
+
+.home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 18% 12% minmax(0, 40%) 6% 18% 6%;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "nav . about . quote ."
+    "nav . about . social .";
+  color: #edf1f3;
+  background-color: #080b18;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 22%),
+    url("img/coast-cosmos-desktop-16x10.webp");
+  background-size: 100% 100%, cover;
+  background-position: center, left center;
+  background-repeat: no-repeat;
+  text-shadow: 0 1px 14px rgba(0,0,0,.6);
+}
+
+.home .site-nav {
+  grid-area: nav;
+  flex-direction: column;
+  gap: 18px;
+  padding: 64px 0 0 40px;
+  font-size: 1.1875rem;
+}
+.home .nav-name { font-size: 1.625rem; line-height: 1.15; margin-bottom: 14px; color: #fff; }
+
+.home-about {
+  grid-area: about;
+  align-self: center;
+  padding: 56px 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+.home-about h1 { margin: 0 0 22px; font-size: 2.375rem; line-height: 1.2; font-weight: 400; color: #fff; }
+.home-about p, .home-about ol { margin: 0 0 18px; }
+.home-about ol { padding-left: 22px; }
+.home-about li { margin-bottom: 8px; }
+.home-about .aukaat { margin-top: 24px; }
+.home-about .translation { color: #c2cddb; }
+
+.home-quote {
+  grid-area: quote;
+  align-self: end;
+  margin: 0 0 32px;
+}
+.home-quote blockquote { margin: 0 0 14px; padding: 0; border: 0; font-size: 1.875rem; line-height: 1.25; font-style: italic; color: #f4f1ea; }
+.home-quote figcaption { font-family: var(--sans); font-size: .875rem; color: #b9c3da; }
+
+.home-social {
+  grid-area: social;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 40px;
+  font-family: var(--sans);
+  font-size: .8125rem;
+}
+.home-social a { color: #aab4cc; text-decoration: none; }
+.home-social a:hover { color: #fff; text-decoration: underline; }
+
+/* Phone & narrow screens: same journey, top to bottom — cosmos → sea → coast */
+@media (max-width: 48rem) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    background-image:
+      linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,.55) 100%),
+      url("img/coast-cosmos-phone.webp");
+    background-position: center, center top;
+  }
+  .home .site-nav { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; padding: 28px 24px 0; font-size: 1.125rem; }
+  .home .nav-name { flex-basis: 100%; margin: 0 0 4px; font-size: 1.625rem; }
+  .home-quote { order: 1; margin: 10vh 24px 0; }
+  .home-quote blockquote { font-size: 1.75rem; }
+  .home-about { order: 2; padding: 8vh 24px 0; font-size: 1.0625rem; }
+  .home-about h1 { font-size: 2rem; }
+  /* the empty stretch below the text is the surf and cliffs: no text sits on the bright water */
+  .home-social { order: 3; margin-top: auto; padding: 560px 24px 32px; font-size: .875rem; }
+  .home-social a { color: #efe6dc; }
+}
+
+/* ==========================================================
+   SECTION PAGES — banner on top, solid background below
+   ========================================================== */
+
+.banner {
+  position: relative;
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 300% auto;
+  color: #fff;
+  text-shadow: 0 1px 14px rgba(0,0,0,.6);
+}
+.banner-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  min-height: 300px;
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: .5rem 1.5rem;
-  margin-bottom: 3.5rem;
-  font-family: var(--sans);
-  font-size: .95rem;
+  gap: 48px;
 }
-.site-name {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-}
-.site-header nav { display: flex; gap: 1.25rem; }
-.site-header nav a { color: var(--muted); text-decoration: none; }
-.site-header nav a:hover,
-.site-header nav a[aria-current="page"] { color: var(--text); }
-.site-header nav a[aria-current="page"] { border-bottom: 1px solid var(--accent); }
+.banner-slim .banner-inner { min-height: 150px; }
 
-.site-footer {
-  margin-top: 5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-  display: flex;
-  gap: 1.25rem;
-  font-family: var(--sans);
-  font-size: .85rem;
-  color: var(--muted);
-}
-.site-footer a { color: var(--muted); }
+/* Each section shows its own part of the same photo. The gradient fades the
+   photo into the solid page colour, so nothing busy ever sits behind text. */
+.banner-tools   { background-image: linear-gradient(to bottom, rgba(11,16,32,.4) 0%, rgba(11,16,32,.3) 50%, var(--bg) 100%), url("img/coast-cosmos-desktop.webp"); background-position: center, 0% 50%; }
+.banner-writing { background-image: linear-gradient(to bottom, rgba(11,16,32,.4) 0%, rgba(11,16,32,.3) 50%, var(--bg) 100%), url("img/coast-cosmos-desktop.webp"); background-position: center, 48% 50%; }
+.banner-reading { background-image: linear-gradient(to bottom, rgba(11,16,32,.4) 0%, rgba(11,16,32,.3) 50%, var(--bg) 100%), url("img/coast-cosmos-desktop.webp"); background-position: center, 100% 50%; }
+
+.banner .site-nav { flex-wrap: wrap; align-items: baseline; gap: 8px 28px; font-size: 1.0625rem; }
+.banner .nav-name { font-size: 1.375rem; margin-right: auto; color: #fff; }
+.banner-title { margin: 0; font-size: 2.75rem; line-height: 1.15; font-weight: 400; letter-spacing: -0.01em; }
+
+/* reading column */
+.wrap { max-width: 42rem; margin: 0 auto; padding: 0 24px; }
+main.wrap { padding-top: 40px; padding-bottom: 24px; }
 
 /* ---------- type ---------- */
 
-h1, h2, h3 { line-height: 1.25; font-weight: 600; }
-h1 { font-size: 2rem; margin: 0 0 1rem; letter-spacing: -.01em; }
-h2 { font-size: 1.3rem; margin: 2.75rem 0 .75rem; }
-h3 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
-
-p, ul, ol { margin: 0 0 1.1rem; }
-
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3 { line-height: 1.25; font-weight: 500; color: #fff; }
+h1 { font-size: 2.125rem; margin: 0 0 1rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.375rem; margin: 2.75rem 0 .75rem; }
+h3 { font-size: 1.125rem; margin: 2rem 0 .5rem; }
+p, ul, ol { margin: 0 0 1.15rem; }
 
 .lede { font-size: 1.25rem; color: var(--muted); }
-.intro .lede { color: var(--text); }
 .meta { font-family: var(--sans); font-size: .82rem; color: var(--muted); }
 .empty { color: var(--muted); font-style: italic; }
 
-blockquote {
-  margin: 1.5rem 0;
-  padding-left: 1.1rem;
-  border-left: 2px solid var(--rule);
-  color: var(--muted);
-}
-code { font-size: .88em; background: var(--tag-bg); padding: .1em .3em; border-radius: 3px; }
-pre { background: var(--tag-bg); padding: 1rem; overflow-x: auto; border-radius: 4px; font-size: .9rem; line-height: 1.5; }
+blockquote { margin: 1.5rem 0; padding-left: 1.1rem; border-left: 2px solid var(--rule); color: var(--muted); }
+code { font-size: .88em; background: var(--surface); padding: .1em .3em; border-radius: 3px; }
+pre { background: var(--surface); padding: 1rem; overflow-x: auto; border-radius: 4px; font-size: .9rem; line-height: 1.5; }
 pre code { background: none; padding: 0; }
 img { max-width: 100%; height: auto; }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
@@ -109,49 +188,36 @@ th, td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px sol
 /* ---------- lists of items ---------- */
 
 .list { list-style: none; padding: 0; }
-.list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: .45rem 0;
-  border-bottom: 1px solid var(--rule);
-}
+.list li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid var(--rule); }
 .list li a { text-decoration: none; color: var(--text); }
 .list li a:hover { color: var(--accent); }
 .list .meta { white-space: nowrap; }
-
-.year { font-family: var(--sans); font-size: .85rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.ext { color: var(--muted); font-size: .85em; }
+.year { font-family: var(--sans); font-size: .82rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
 
 /* ---------- tools ---------- */
 
-.tool { padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+.tool { padding: 1.75rem 0; border-bottom: 1px solid var(--rule); }
 .tool h2 { margin: 0 0 .4rem; }
-.status, .kind {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: .4rem;
-  padding: .1rem .5rem;
-  border-radius: 999px;
-  background: var(--tag-bg);
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: .72rem;
-  font-weight: 500;
-  letter-spacing: .02em;
-}
-.tool dl { display: grid; grid-template-columns: 6.5rem 1fr; gap: .35rem 1rem; margin: 0; font-size: 1rem; }
-.tool dt { font-family: var(--sans); font-size: .8rem; color: var(--muted); padding-top: .2rem; }
+.status, .kind { display: inline-block; vertical-align: middle; margin-left: .4rem; padding: .1rem .55rem; border-radius: 999px; background: var(--surface); color: var(--muted); font-family: var(--sans); font-size: .72rem; font-weight: 500; letter-spacing: .02em; }
+.tool dl { display: grid; grid-template-columns: 7rem 1fr; gap: .45rem 1rem; margin: 0; font-size: 1.0625rem; }
+.tool dt { font-family: var(--sans); font-size: .8rem; color: var(--muted); padding-top: .25rem; }
 .tool dd { margin: 0; }
+.tool dd ul { margin: 0; padding-left: 1.1rem; }
+.tool dd li { margin-bottom: .15rem; }
+.downloads { display: flex; flex-wrap: wrap; gap: .5rem; }
+.dl { display: inline-block; padding: .35rem .85rem; border: 1px solid var(--rule); border-radius: 6px; font-family: var(--sans); font-size: .85rem; color: var(--text); text-decoration: none; }
+.dl:hover { border-color: var(--accent); color: var(--accent); }
+.dl span { color: var(--muted); font-size: .78rem; }
 
-/* ---------- reading ---------- */
+/* ---------- reading list ---------- */
 
 .reading { list-style: none; padding: 0; }
 .reading li { margin-bottom: 1.25rem; }
 .reading-title { margin: 0; }
-.reading-note { margin: .15rem 0 0; color: var(--muted); font-size: 1rem; }
+.reading-note { margin: .15rem 0 0; color: var(--muted); font-size: 1.0625rem; }
 
-/* ---------- posts ---------- */
+/* ---------- articles ---------- */
 
 .post header { margin-bottom: 2rem; }
 .post .kind { margin-left: .5rem; }
@@ -160,37 +226,21 @@ th, td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px sol
 .sources h2 { margin-top: 0; font-size: 1rem; }
 .back { margin-top: 3rem; font-family: var(--sans); font-size: .9rem; }
 
+/* ---------- footer ---------- */
+
+.site-footer { margin-top: 4rem; padding-top: 1.25rem; padding-bottom: 2.5rem; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 1.25rem; font-family: var(--sans); font-size: .85rem; }
+.site-footer a { color: var(--muted); }
+.ai-note { flex-basis: 100%; margin: .25rem 0 0; font-size: .8rem; line-height: 1.5; color: var(--muted); }
+
 /* ---------- small screens ---------- */
 
 @media (max-width: 34rem) {
-  body { font-size: 1.0625rem; padding-top: 1.5rem; }
-  h1 { font-size: 1.7rem; }
-  .site-header { margin-bottom: 2.5rem; }
+  body { font-size: 1.0625rem; }
+  .banner-inner { min-height: 230px; padding: 24px 24px 28px; gap: 32px; }
+  .banner-slim .banner-inner { min-height: 120px; }
+  .banner .nav-name { flex-basis: 100%; }
+  .banner-title { font-size: 2.125rem; }
   .list li { flex-direction: column; gap: 0; }
   .tool dl { grid-template-columns: 1fr; gap: 0; }
   .tool dt { padding-top: .6rem; }
 }
-
-/* ---------- tool details: lists & downloads ---------- */
-
-.tool dd ul { margin: 0; padding-left: 1.1rem; }
-.tool dd li { margin-bottom: .15rem; }
-.downloads { display: flex; flex-wrap: wrap; gap: .5rem; }
-.dl {
-  display: inline-block;
-  padding: .3rem .8rem;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  font-family: var(--sans);
-  font-size: .85rem;
-  color: var(--text);
-  text-decoration: none;
-}
-.dl:hover { border-color: var(--accent); color: var(--accent); }
-.dl span { color: var(--muted); font-size: .78rem; }
-
-/* ---------- AI-drafting note ---------- */
-
-.ai-note { flex-basis: 100%; margin: .25rem 0 0; font-size: .8rem; line-height: 1.5; }
-.site-footer { flex-wrap: wrap; }
-.ext { color: var(--muted); font-size: .85em; }
