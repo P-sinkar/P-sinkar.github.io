@@ -17,5 +17,6 @@ Writing here is a way to think more clearly, so mostly what you will find here a
 
 CA by education, I work in the founder's office at a consumer tech startup. I hope one day the sum total of my actions will outweigh where I learned and where I worked.
 
-I try to remind myself that *apni aukaat ke bahar ki cheezein try kar leni chahiye, kya pata humne apni aukaat ko underestimate kiya ho.*  
+I try to remind myself
+                *apni aukaat ke bahar ki cheezein try kar leni chahiye, kya pata humne apni aukaat ko underestimate kiya ho.*  
 <span class="translation">(Try things that seem beyond your reach. Maybe you have underestimated your reach.)</span>
