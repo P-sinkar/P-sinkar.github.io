@@ -88,8 +88,8 @@ a:hover { text-decoration-thickness: 2px; }
 
 .home-quote {
   grid-area: quote;
-  align-self: end;
-  margin: 0 0 32px;
+  align-self: center;   /* in the middle of the night sky, away from the links */
+  margin: 0;
 }
 .home-quote blockquote { margin: 0 0 14px; padding: 0; border: 0; font-size: 1.875rem; line-height: 1.25; font-style: italic; color: #f4f1ea; }
 .home-quote figcaption { font-family: var(--sans); font-size: .875rem; color: #b9c3da; }
