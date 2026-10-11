@@ -11,11 +11,19 @@ import xml.etree.ElementTree as ET
 FEED = os.environ.get("FEED_URL", "https://pranavsinkar.substack.com/feed")
 POSTS = "_posts"
 
-req = urllib.request.Request(FEED, headers={"User-Agent": "Mozilla/5.0 (site sync; +https://p-sinkar.github.io)"})
+req = urllib.request.Request(FEED, headers={
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+})
 try:
-    xml = urllib.request.urlopen(req, timeout=30).read()
+    resp = urllib.request.urlopen(req, timeout=30)
+    xml = resp.read()
 except Exception as e:
-    sys.exit(f"Could not fetch {FEED}: {e}")
+    print(f"::error::Could not fetch {FEED}: {e}")
+    sys.exit(1)
+if b"<rss" not in xml[:2000] and b"<feed" not in xml[:2000]:
+    print(f"::error::{FEED} (final URL {resp.geturl()}) did not return an RSS feed. First bytes: {xml[:150]!r}")
+    sys.exit(1)
 
 os.makedirs(POSTS, exist_ok=True)
 existing = ""
