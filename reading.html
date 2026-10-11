@@ -1,0 +1,24 @@
+---
+layout: default
+title: Reading
+permalink: /reading/
+---
+<h1>Reading</h1>
+<p class="lede">Books, essays, papers and other things I think are worth your time, each with a short note on why.</p>
+
+{% if site.data.reading and site.data.reading.size > 0 %}
+  {% assign groups = site.data.reading | group_by: "category" %}
+  {% for group in groups %}
+  <h2 class="year">{{ group.name | default: "Other" }}</h2>
+  <ul class="reading">
+    {% for item in group.items %}
+    <li>
+      <p class="reading-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}{% if item.author %} <span class="meta">— {{ item.author }}</span>{% endif %}</p>
+      {% if item.note %}<p class="reading-note">{{ item.note }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+  <p class="empty">The list is just getting started. Recommendations will appear here soon.</p>
+{% endif %}

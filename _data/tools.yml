@@ -1,0 +1,26 @@
+# Things I've built.
+# Each entry needs a name, description and status. Every other field is optional;
+# leave it out and it won't show. Order here = order on the page.
+#
+# Fields:
+#   name, description, problem, status, source (URL), install, limitations
+
+- name: ChatGPT Conversation Organiser
+  description: A Chrome extension for organising ChatGPT conversations into folders and nested folders.
+  problem: A long, flat list of conversations gets hard to navigate once you use ChatGPT for many different things.
+  status: In development
+  # source: https://github.com/your-handle/chatgpt-organiser
+  # install: Download the folder, open chrome://extensions, turn on Developer mode, click "Load unpacked" and select the folder.
+  limitations: Not yet publicly released.
+
+- name: Claude Conversation Organiser
+  description: A companion extension that brings the same folder-based organisation to Claude conversations.
+  problem: The same as above, for Claude.
+  status: In development
+  limitations: Not yet publicly released.
+
+- name: YouTube Transcript Rater
+  description: A Chrome extension intended to evaluate a video's transcript against my own criteria and produce a rating and summary.
+  problem: Deciding whether a long video is worth watching before spending the time on it.
+  status: In development
+  limitations: Not yet publicly released.

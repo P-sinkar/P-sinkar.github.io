@@ -1,0 +1,27 @@
+# ------------------------------------------------------------
+# Site settings — edit these freely.
+# ------------------------------------------------------------
+title: Pranav
+description: A place for things I think about, build, and find interesting.
+
+# Your links. Leave any of them blank ("") and it simply won't show.
+email: ""            # e.g. you@example.com
+linkedin: ""         # full URL, e.g. https://www.linkedin.com/in/your-handle
+github: "https://github.com/P-sinkar"
+
+# Hosting.
+# If your repo is named <username>.github.io, leave baseurl as "".
+# If it's named anything else (e.g. "website"), set baseurl: "/website".
+url: ""
+baseurl: ""
+
+# Article URLs look like /writing/my-article-title/
+permalink: /writing/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - "*.txt"

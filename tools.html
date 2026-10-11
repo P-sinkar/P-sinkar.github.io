@@ -1,0 +1,20 @@
+---
+layout: default
+title: Tools
+permalink: /tools/
+---
+<h1>Things I've built</h1>
+<p class="lede">Small tools I've made to solve problems I ran into. Some are useful, some are experiments, and the status of each is noted honestly.</p>
+
+{% for tool in site.data.tools %}
+<article class="tool" id="{{ tool.name | slugify }}">
+  <h2>{{ tool.name }} <span class="status">{{ tool.status }}</span></h2>
+  <p>{{ tool.description }}</p>
+  <dl>
+    {% if tool.problem %}<dt>Why</dt><dd>{{ tool.problem }}</dd>{% endif %}
+    {% if tool.install %}<dt>Install</dt><dd>{{ tool.install | markdownify | remove: "<p>" | remove: "</p>" }}</dd>{% endif %}
+    {% if tool.limitations %}<dt>Limitations</dt><dd>{{ tool.limitations }}</dd>{% endif %}
+    {% if tool.source %}<dt>Source</dt><dd><a href="{{ tool.source }}">{{ tool.source | remove: "https://" }}</a></dd>{% endif %}
+  </dl>
+</article>
+{% endfor %}

@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post">
+  <header>
+    <h1>{{ page.title }}</h1>
+    <p class="meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      {% if page.kind %}<span class="kind kind-{{ page.kind | slugify }}">{{ page.kind }}</span>{% endif %}
+    </p>
+    {% if page.kind == "Note" %}<p class="kind-caveat">A short observation or early thought, not a settled view.</p>{% endif %}
+    {% if page.kind == "Experiment" %}<p class="kind-caveat">An experiment in progress. Results and conclusions may change.</p>{% endif %}
+  </header>
+
+  {{ content }}
+
+  {% if page.sources %}
+  <section class="sources">
+    <h2>Sources</h2>
+    <ol>
+      {% for s in page.sources %}
+      <li>{% if s.url %}<a href="{{ s.url }}">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if page.updated %}<p class="meta">Last updated {{ page.updated | date: "%-d %B %Y" }}.</p>{% endif %}
+  <p class="back"><a href="{{ '/writing/' | relative_url }}">← All writing</a></p>
+</article>

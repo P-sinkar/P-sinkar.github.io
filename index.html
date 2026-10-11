@@ -1,0 +1,38 @@
+---
+layout: default
+title: Home
+---
+<section class="intro">
+  <h1>Hi, I'm Pranav.</h1>
+  <p class="lede">This is a place for things I think about, build, and find interesting.</p>
+  <p>I work in strategy and investments. Outside of that, I think about technology and AI, build small software tools for problems I run into, and wonder about how we think and live. Here you'll find <a href="{{ '/writing/' | relative_url }}">my writing</a>, <a href="{{ '/tools/' | relative_url }}">things I've built</a>, and <a href="{{ '/reading/' | relative_url }}">things worth reading</a>.</p>
+</section>
+
+<section>
+  <h2>Recent writing</h2>
+  {% if site.posts.size > 0 %}
+    <ul class="list">
+      {% for post in site.posts limit: 5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="meta">{{ post.date | date: "%b %Y" }}{% if post.kind %} · {{ post.kind }}{% endif %}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if site.posts.size > 5 %}<p><a href="{{ '/writing/' | relative_url }}">All writing →</a></p>{% endif %}
+  {% else %}
+    <p class="empty">Nothing published yet. The first pieces are on their way.</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Things I've built</h2>
+  <ul class="list">
+    {% for tool in site.data.tools limit: 3 %}
+    <li>
+      <a href="{{ '/tools/' | relative_url }}#{{ tool.name | slugify }}">{{ tool.name }}</a>
+      <span class="meta">{{ tool.status }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
