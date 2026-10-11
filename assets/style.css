@@ -11,7 +11,9 @@
   --rule: #24304a;
   --accent: #8fd0d6;      /* sea glass, ~11:1 on --bg */
   --sand: #eae2d8;        /* menu text over the cliffs */
-  --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  /* Aptos or Calibri where the visitor's device has them (Windows, Office);
+     everyone else gets Carlito, a free font built as a twin of Calibri. */
+  --body: "Aptos", "Calibri", "Carlito", "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
   --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
@@ -22,7 +24,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--serif);
+  font-family: var(--body);
   font-size: 1.1875rem;   /* 19px */
   line-height: 1.7;
   text-rendering: optimizeLegibility;
@@ -33,7 +35,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- navigation (shared) ---------- */
 
-.site-nav { display: flex; font-family: var(--serif); }
+.site-nav { display: flex; font-family: var(--body); }
 .site-nav a { color: var(--sand); text-decoration: none; }
 .site-nav a:hover { color: #fff; text-decoration: underline; }
 .site-nav a[aria-current="page"] { color: #fff; }
@@ -254,3 +256,10 @@ th, td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px sol
   .tool dl { grid-template-columns: 1fr; gap: 0; }
   .tool dt { padding-top: .6rem; }
 }
+
+/* ---------- the reminder on the About page ---------- */
+
+.aukaat { margin: .25rem 0 1.5rem; }
+.aukaat blockquote { margin: 0; padding: 0; border: 0; font-size: 1.5rem; line-height: 1.4; font-style: italic; color: #fff; }
+.aukaat figcaption { margin-top: .6rem; font-size: .95rem; line-height: 1.4; color: var(--muted); }
+@media (min-width: 48rem) { .aukaat figcaption { white-space: nowrap; } }
