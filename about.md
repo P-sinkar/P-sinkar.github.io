@@ -5,13 +5,14 @@ permalink: /about/
 ---
 # About
 
-I'm Pranav. I work in Strategy & Investments at A1 Apps, where I work on business performance, financial analysis and strategic initiatives.
+Pranav here. This website is an attempt to put down stuff that I read, think and try to build.
+The thing I enjoy the most - learning how things work and then playing around with it. It gets reflected in - 
+1. Learning what incentivises humans and how it reflects through their actions
+2. Breaking down things/tech to their core - how they work and what I can tweak to make it better
+3. Businesses - How they operate, what makes it what it is today and what is the limiting factor in its next steup
 
-I'm drawn to how businesses work: business models, competitive advantage, unit economics and capital allocation. The sectors I follow most closely are healthcare, consumer technology, fintech and renewable energy.
-
-Outside of that, I'm interested in technology and AI and how they change both businesses and human behaviour. I like building practical tools, usually with Python or as small browser extensions, to fix problems I run into. And I spend time on philosophy and broader questions about how we think and live.
-
-This site is a living record of all of that. Writing here is a way to think more clearly, so you'll find unfinished notes alongside more considered pieces. Each is labelled for what it is.
+Writing here is a way to think more clearly, so mostly what you will find here are unfinished notes. Each one an attempt to be better than the last one.
+CA by education, I work in founders office at a consumer tech startup. Hope one day sum total of my actions will outweigh where I learned and where I worked.
 
 ## Elsewhere
 
