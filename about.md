@@ -5,7 +5,7 @@ banner: reading
 permalink: /about/
 ---
 
-Pranav here. This website is an attempt to put down the stuff I read, think about and try to build.
+Pranav here. This is where I share what I read, think about and try to build.
 
 The thing I enjoy the most is learning how things work and then playing around with them. It gets reflected in:
 
