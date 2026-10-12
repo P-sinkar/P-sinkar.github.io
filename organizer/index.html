@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+<title>Chat Organizer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <!-- Main: folders and chats -->
+  <section id="mainView" class="view">
+    <header class="topbar">
+      <h1>Chat Organizer</h1>
+      <button id="menuBtn" class="icon-btn" aria-label="Menu">&#8942;</button>
+    </header>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search chats" autocomplete="off">
+      <div class="toolbar-row">
+        <div class="chips" role="group" aria-label="Show chats from">
+          <button class="chip" data-filter="all">All</button>
+          <button class="chip" data-filter="chatgpt">ChatGPT</button>
+          <button class="chip" data-filter="claude">Claude</button>
+        </div>
+        <select id="sort" aria-label="Sort chats">
+          <option value="date_desc">Newest</option>
+          <option value="date_asc">Oldest</option>
+          <option value="title_asc">A&ndash;Z</option>
+        </select>
+      </div>
+    </div>
+    <div id="banner" class="banner" hidden></div>
+    <div id="tree" class="tree"></div>
+    <button id="newFolderBtn" class="fab">+ Folder</button>
+  </section>
+
+  <!-- A chat sent from Chrome by the bookmarklet -->
+  <section id="receiveView" class="view" hidden>
+    <header class="topbar">
+      <button class="icon-btn back-btn" aria-label="Back">&larr;</button>
+      <h1>Chat received</h1>
+      <span></span>
+    </header>
+    <div class="pane">
+      <div class="card">
+        <div class="card-meta" id="rcMeta"></div>
+        <h2 id="rcTitle"></h2>
+        <p class="muted" id="rcFirst"></p>
+      </div>
+      <h3 class="section-label">Export</h3>
+      <div class="export-grid">
+        <button class="big-btn" data-export="ai">For AI <small>.md</small></button>
+        <button class="big-btn" data-export="html">Readable <small>.html</small></button>
+      </div>
+      <div class="share-row" id="rcShareRow" hidden>
+        <button class="link-btn" data-share="ai">Share .md…</button>
+        <button class="link-btn" data-share="html">Share .html…</button>
+      </div>
+      <h3 class="section-label">Folder</h3>
+      <div class="card row-card">
+        <span id="rcFolder" class="grow"></span>
+        <button id="rcFileBtn" class="btn">Choose folder</button>
+      </div>
+      <button class="btn wide done-btn">Done</button>
+    </div>
+  </section>
+
+  <!-- A link shared to the app from the ChatGPT or Claude app -->
+  <section id="shareView" class="view" hidden>
+    <header class="topbar">
+      <button class="icon-btn back-btn" aria-label="Back">&larr;</button>
+      <h1>Save chat link</h1>
+      <span></span>
+    </header>
+    <div class="pane">
+      <div class="card">
+        <div class="card-meta" id="shMeta"></div>
+        <label class="field-label" for="shTitle">Title</label>
+        <input id="shTitle" class="field" type="text">
+        <p class="hint" id="shNote" hidden></p>
+      </div>
+      <h3 class="section-label">Folder</h3>
+      <div class="card row-card">
+        <span id="shFolder" class="grow">Unorganized</span>
+        <button id="shPickBtn" class="btn">Choose</button>
+      </div>
+      <button id="shSaveBtn" class="btn primary wide">Save</button>
+    </div>
+  </section>
+
+  <input type="file" id="importFile" accept=".json,application/json" hidden>
+  <input type="file" id="restoreFile" accept=".json,application/json" hidden>
+  <input type="file" id="chatExportFile" accept=".json,application/json" hidden>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="lib/marked.min.js"></script>
+  <script src="data.js"></script>
+  <script src="platform-chatgpt.js"></script>
+  <script src="platform-claude.js"></script>
+  <script src="export-formats.js"></script>
+  <script src="dialogs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
